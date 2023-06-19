@@ -21,3 +21,11 @@ end
 function ItemVenda:total()
   return self.valor * self.quantidade
 end
+-- exibirItemVenda
+function ItemVenda:exibirItemVenda()
+  print("Item da venda:")
+  print("Nome do produto: " .. self.produto.nome)
+  print("Valor do produto: " .. self.produto.valor)
+  print("Quantidade: " .. self.quantidade)
+  print("Total: " .. self:total())
+end
