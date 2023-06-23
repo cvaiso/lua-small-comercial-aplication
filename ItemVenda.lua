@@ -19,11 +19,12 @@ end
 
 -- Implementação do método total para ItemVenda
 function ItemVenda:total()
-  return self.valor * self.quantidade
+  return tonumber(self.valor) * tonumber(self.quantidade)
 end
--- exibirItemVenda
+-- metodo exibirItemVenda
 function ItemVenda:exibirItemVenda()
   print("Item da venda:")
+  print("Codigo do produto: " .. self.produto.codigo)
   print("Nome do produto: " .. self.produto.nome)
   print("Valor do produto: " .. self.produto.valor)
   print("Quantidade: " .. self.quantidade)
