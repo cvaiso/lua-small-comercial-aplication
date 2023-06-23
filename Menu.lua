@@ -1,4 +1,6 @@
--- Definição da classe Venda, que herda de Totalizavel
+-- Definição da classe Menu
+Menu = {}
+
 -- Método construtor da classe Venda
 function Menu:new()
   local obj = {}
@@ -7,9 +9,8 @@ function Menu:new()
   return obj
 end
 -- Função para exibir o menu principal
-function exibirMenuPrincipal()
+function Menu:exibirMenuPrincipal()
     local opcao = ""
-    while opcao ~= "0" do
     print("Selecione uma opção:")
     print("1. Cliente")
     print("2. Produto")
@@ -17,35 +18,22 @@ function exibirMenuPrincipal()
     print("0. Sair")
     io.write("Opção: ")
     opcao = io.read()
-
-    if opcao == "1" then
-      exibirMenuCliente()
-    elseif opcao == "2" then
-      exibirMenuProduto()
-    elseif opcao == "3" then
-      exibirMenuVenda()
-    elseif opcao == "0" then
-      print("Encerrando o programa...")
-    else
-      print("Opção inválida!")
-    end
-    end
+    return opcao
 end
 -- Função para exibir o menu do cliente
-function exibirMenuCliente()
+function Menu:exibirMenuCliente()
   print("\nMenu Cliente:")
   print("1. Adicionar cliente")
   print("2. Remover cliente")
   print("3. Visualizar clientes")
-  print("4. Editar cliente")
   print("0. Voltar")
   io.write("Opção: ")
-  local input = io.read
+  local input = io.read()
   return input
 end
 
 -- Função para exibir o menu do produto
-function exibirMenuProduto()
+function Menu:exibirMenuProduto()
   print("\nMenu Produto:")
   print("1. Adicionar produto")
   print("2. Remover produto")
@@ -58,7 +46,17 @@ function exibirMenuProduto()
 end
 
 -- Função para exibir o menu da venda
-function exibirMenuVenda()
+function Menu:exibirMenuVenda()
+  print("\nMenu Venda:")
+  print("1. Realizar venda")
+  print("0. Voltar")
+  io.write("Opção: ")
+  local input = io.read
+  return input
+end
+
+-- Função para exibir o menu de despedida
+function Menu:exibirMenuDespedida()
   print("\nMenu Venda:")
   print("1. Realizar venda")
   print("0. Voltar")

@@ -6,7 +6,7 @@ require("ItemVenda")
 require("Venda")
 require("Menu")
 
-local clientes = {}
+clientes = {}
 -- Função para adicionar um cliente ao array
 function adicionarCliente(cliente)
   table.insert(clientes, cliente)
@@ -26,7 +26,7 @@ function exibirClientes()
     cliente:display()
   end
 end
-local produtos = {}
+produtos = {}
 -- funcao para adicionar produtos ao array
 function adicionarProduto(produto)
   table.insert(produtos, produto)
@@ -46,7 +46,7 @@ function exibirProdutos()
     produto:display()
   end
 end
-local vendas = {}
+vendas = {}
 -- funcao para adicionar vendas ao array
 function adicionarVenda(venda)
   table.insert(vendas, venda)
@@ -67,18 +67,42 @@ function exibirVendas()
   end
 end
 function main()
+    menu = Menu:new()
+    opcao = '1'
 
--- Definição da tabela de clientes
-produto1 = Produto:new("001", "Placa mãe","329.98")
-produto1 = Produto:new("002", "Processador","720.00")
-venda1 = Venda:new("v001", "segunda1","cliente1")
-adicionarVenda(venda1)
-
-itemvenda1 = ItemVenda:new(produto1, 2)
--- Qual o erro na linha abaixo?
-venda1:adicionarItem(itemvenda1)
-venda1:exibirVendas()
+    -- main menu loop that allows entering other menus
+    while opcao ~= '0' do
+        opcao = menu:exibirMenuPrincipal()
+        if opcao == '1' then
+            opcao_menu_cliente = '1'
+            while opcao_menu_cliente ~= '0'  do
+            opcao_menu_cliente = menu:exibirMenuCliente()
+            print(opcao_menu_cliente)
+            print("CHEGOU AQUI")
+                if opcao_menu_cliente == '1' then
+                    local client = Cliente:insere()
+                    adicionarCliente(client)
+                elseif opcao_menu_cliente == '2' then
+                    print('Digite o nome do Cliente que quer remover: ')
+                    local name = io.read()
+                    removerCliente(name)
+                elseif opcao_menu_cliente == '3' then
+                    exibirClientes()
+                else
+                    break
+                end
+            end
+        end
+        if opcao == '2' then
+        menu.exibirMenuProduto()
+        end
+        if opcao == '3' then
+            menu.exibirMenuVenda()
+        end
+        if opcao == '0' then
+            break
+        end
+    end
 end
-
 -- Execute a função principal
 main()
